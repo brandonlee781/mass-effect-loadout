@@ -98,14 +98,16 @@ export const RanksProvider = ({ children }: Props): JSX.Element => {
       string.split('').forEach((str, index) => {
         const skill = skillArray[index]
         const order = getRankOrders(str)
-        const selectedRanks = skill.ranks
-          .filter(rank => order.includes(`${rank.rank}`))
-          .map(rank => rank.id)
+        if (skill) {
+          const selectedRanks = skill.ranks
+            .filter(rank => order.includes(`${rank.rank}`))
+            .map(rank => rank.id)
 
-        if (selectedRanks.length) {
-          setRanksState(prevRanks =>
-            Array.from(new Set([...prevRanks, ...selectedRanks]))
-          )
+          if (selectedRanks.length) {
+            setRanksState(prevRanks =>
+              Array.from(new Set([...prevRanks, ...selectedRanks]))
+            )
+          }
         }
       })
     }

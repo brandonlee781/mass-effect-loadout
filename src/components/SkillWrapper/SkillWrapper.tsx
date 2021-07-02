@@ -141,7 +141,7 @@ const SkillWrapper = (props: Props): JSX.Element => {
         <button
           className="h-16 mr-4"
           type="button"
-          onClick={() => history.push('/')}
+          onClick={() => history.push('/mass-effect-loadout')}
         >
           Back
         </button>

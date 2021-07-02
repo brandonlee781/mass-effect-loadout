@@ -32,7 +32,7 @@ const SkillListItem = (props: Props): JSX.Element => {
 
   return (
     <Link
-      to={`/${category}/${skill.id}`}
+      to={`/mass-effect-loadout/${category}/${skill.id}`}
       className="flex flex-row flex-nowrap items-center justify-end"
     >
       <Name>{skill.name}</Name>

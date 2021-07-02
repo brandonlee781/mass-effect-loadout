@@ -42,19 +42,19 @@ const Main = (): JSX.Element => {
     <nav>
       <List>
         <ListItem padding={getItemDistance(1)}>
-          <ListLink to="/combat">
+          <ListLink to="/mass-effect-loadout/combat">
             <FaFolderOpen className="mr-1" />
             <span>Combat</span>
           </ListLink>
         </ListItem>
         <ListItem padding={getItemDistance(2)}>
-          <ListLink to="/biotic">
+          <ListLink to="/mass-effect-loadout/biotic">
             <FaFolderOpen className="mr-1" />
             <span>Biotic</span>
           </ListLink>
         </ListItem>
         <ListItem padding={getItemDistance(3)}>
-          <ListLink to="/tech">
+          <ListLink to="/mass-effect-loadout/tech">
             <FaFolderOpen className="mr-1" />
             <span>Tech</span>
           </ListLink>

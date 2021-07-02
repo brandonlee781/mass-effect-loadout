@@ -14,10 +14,16 @@ function App(): JSX.Element {
     <RanksProvider>
       <div className="App">
         <Switch>
-          <Route path="/combat/:skillId?" component={Combat} />
-          <Route path="/biotic/:skillId?" component={Biotic} />
-          <Route path="/tech/:skillId?" component={Tech} />
-          <Route path="/:urlString?" component={Main} />
+          <Route
+            path="/mass-effect-loadout/combat/:skillId?"
+            component={Combat}
+          />
+          <Route
+            path="/mass-effect-loadout/biotic/:skillId?"
+            component={Biotic}
+          />
+          <Route path="/mass-effect-loadout/tech/:skillId?" component={Tech} />
+          <Route path="/mass-effect-loadout/:urlString?" component={Main} />
         </Switch>
       </div>
     </RanksProvider>

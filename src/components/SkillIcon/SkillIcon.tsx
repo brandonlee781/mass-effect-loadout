@@ -24,21 +24,22 @@ const Combo = styled.img<{
 
 const SkillIcon = (props: Props): JSX.Element => {
   const { icon, detonator, primer = '', height, width } = props
-  const primerImg = `/src/assets/icons/${
+  const primerImg = `/mass-effect-loadout/icons/${
     primer.charAt(0).toUpperCase() + primer.slice(1)
   }_Primer_Icon.png`
+
   return (
     <div style={{ position: 'relative' }}>
       <img
         className="icon"
-        src={`/src/assets/icons/${icon}`}
+        src={`/mass-effect-loadout/icons/${icon}`}
         alt={icon}
         style={{ height, width }}
       />
       {detonator && (
         <Combo
           detonator={!!detonator}
-          src="/src/assets/icons/Detonator_Icon.png"
+          src="/mass-effect-loadout/icons/Detonator_Icon.png"
           alt="Detonator Icon"
           left={width}
         />

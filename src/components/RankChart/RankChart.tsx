@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import React from 'react'
 
@@ -93,7 +94,9 @@ const RankChart = (props: Props): JSX.Element => {
             setRanks={onRankClick}
           />
           {index === 3 || index === 5 || index === 7 ? (
-            <span className="divider">OR</span>
+            <span key={`divider-${index}`} className="divider">
+              OR
+            </span>
           ) : (
             ''
           )}
