@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route, useParams } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import './App.css'
 
 import { RanksProvider } from './context/ranks.context'

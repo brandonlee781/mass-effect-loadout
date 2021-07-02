@@ -1,6 +1,5 @@
 import React, { ReactNode, useMemo, useState } from 'react'
 import LZUTF8 from 'lzutf8'
-import { useParams } from 'react-router-dom'
 import { combatSkills, techSkills, bioticSkills, Skill } from '../data/skills'
 
 type RanksContextResponse = {
@@ -80,6 +79,7 @@ export const RanksContext = React.createContext<RanksContextResponse>({
   skillString: '',
   skillCounts: { combat: 0, tech: 0, biotic: 0 },
   ranks: [],
+  encodedString: '',
   setRanks: () => {}, // eslint-disable-line
   importRanks: () => {},// eslint-disable-line
 })
