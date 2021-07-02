@@ -16,7 +16,7 @@ type Props = {
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: 20rem calc(100vw - 20rem);
+  grid-template-columns: 20rem 1fr;
 `
 const SkillPoints = styled.div`
   text-transform: uppercase;

@@ -12,7 +12,7 @@ import Tech from './pages/Tech/Tech'
 function App(): JSX.Element {
   return (
     <RanksProvider>
-      <div className="App">
+      <div className="App max-w-screen-xl mx-auto">
         <Switch>
           <Route
             path="/mass-effect-loadout/combat/:skillId?"
