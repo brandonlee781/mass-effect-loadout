@@ -10,7 +10,7 @@ var e=Object.defineProperty,a=Object.defineProperties,i=Object.getOwnPropertyDes
   object-fit: contain;
   left: ${e=>e.detonator?(e.left||64)-14+"px":"0"};
   top: -6px;
-`,z=e=>{const{icon:a,detonator:i,primer:t="",height:n,width:o}=e,s=`/mass-effect-loadout/src/assets/icons/${t.charAt(0).toUpperCase()+t.slice(1)}_Primer_Icon.png`;return u.createElement("div",{style:{position:"relative"}},u.createElement("img",{className:"icon",src:`/mass-effect-loadout/src/assets/icons/${a}`,alt:a,style:{height:n,width:o}}),i&&u.createElement(E,{detonator:!!i,src:"/mass-effect-loadout/src/assets/icons/Detonator_Icon.png",alt:"Detonator Icon",left:o}),t&&u.createElement(E,{primer:!!t,src:s,alt:"Detonator Icon"}))},P=l.div`
+`,z=e=>{const{icon:a,detonator:i,primer:t="",height:n,width:o}=e,s=`/mass-effect-loadout/icons/${t.charAt(0).toUpperCase()+t.slice(1)}_Primer_Icon.png`;return u.createElement("div",{style:{position:"relative"}},u.createElement("img",{className:"icon",src:`/mass-effect-loadout/icons/${a}`,alt:a,style:{height:n,width:o}}),i&&u.createElement(E,{detonator:!!i,src:"/mass-effect-loadout/icons/Detonator_Icon.png",alt:"Detonator Icon",left:o}),t&&u.createElement(E,{primer:!!t,src:s,alt:"Detonator Icon"}))},P=l.div`
   display: flex;
   flex-flow: column;
   text-align: ${e=>e.topRow?"right":"left"};
