@@ -1,6 +1,8 @@
-import React, { ReactNode, useMemo, useState } from 'react'
+import React, { ReactNode, useEffect, useMemo, useState } from 'react'
 import LZUTF8 from 'lzutf8'
 import { combatSkills, techSkills, bioticSkills, Skill } from '../data/skills'
+
+export const STORAGE_KEY = 'mass-effect-loadout'
 
 type RanksContextResponse = {
   skillString: string
@@ -121,9 +123,21 @@ export const RanksProvider = ({ children }: Props): JSX.Element => {
     const bioticSkillString = getRankString(bioticSkills, ranks)
     const techSkillString = getRankString(techSkills, ranks)
     const str = `${combatSkillString}-${bioticSkillString}-${techSkillString}`
-    setEncodedString(LZUTF8.compress(str, { outputEncoding: 'Base64' }))
 
     return str
+  }, [ranks])
+
+  useEffect(() => {
+    const storedString = window.localStorage.getItem(STORAGE_KEY)
+    if (storedString) {
+      importRanks(storedString)
+    }
+  }, [])
+
+  useEffect(() => {
+    const encString = LZUTF8.compress(skillString, { outputEncoding: 'Base64' })
+    window.localStorage.setItem(STORAGE_KEY, encString)
+    setEncodedString(encString)
   }, [ranks])
 
   const skillCounts = useMemo(
