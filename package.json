@@ -1,5 +1,6 @@
 {
   "version": "0.0.0",
+  "homepage": "https://brandonlee781.github.io/mass-effect-loadout/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
