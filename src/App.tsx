@@ -1,51 +1,27 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Switch, Route, useParams } from 'react-router-dom'
+import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0);
+import { RanksProvider } from './context/ranks.context'
 
+import Main from './pages/Main/Main'
+import Combat from './pages/Combat/Combat'
+import Biotic from './pages/Biotic/Biotic'
+import Tech from './pages/Tech/Tech'
+
+function App(): JSX.Element {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((c) => c + 1)}>
-            count is:
-            {' '}
-            {count}
-          </button>
-        </p>
-        <p>
-          Edit
-          {' '}
-          <code>App.tsx</code>
-          {' '}
-          and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
-  );
+    <RanksProvider>
+      <div className="App">
+        <Switch>
+          <Route path="/combat/:skillId?" component={Combat} />
+          <Route path="/biotic/:skillId?" component={Biotic} />
+          <Route path="/tech/:skillId?" component={Tech} />
+          <Route path="/:urlString?" component={Main} />
+        </Switch>
+      </div>
+    </RanksProvider>
+  )
 }
 
-export default App;
+export default App
