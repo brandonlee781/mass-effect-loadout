@@ -21,7 +21,7 @@ type Props = {
   children: ReactNode
 }
 
-const orders: { [key: string]: string } = {
+export const orders: { [key: string]: string } = {
   '': '0',
   '1': '1',
   '1-2': '2',

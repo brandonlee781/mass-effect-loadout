@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { orders } from '../../context/ranks.context'
 import { Skill } from '../../data/skills'
 
 import RankSymbol from '../RankSymbol/RankSymbol'
@@ -24,11 +25,12 @@ const SkillListItem = (props: Props): JSX.Element => {
   const { skill, category, rank } = props
   const ranks = getRanks()
 
-  let rankNum = parseInt(rank, 18)
-
-  if (rankNum > 3 && rankNum <= 5) rankNum = 4
-  if (rankNum > 5 && rankNum <= 9) rankNum = 5
-  if (rankNum > 9) rankNum = 6
+  let skillRanks: number[] = []
+  Object.keys(orders).forEach(key => {
+    if (rank !== '0' && orders[key] === rank) {
+      skillRanks = key.split('-').map(str => +str)
+    }
+  })
 
   return (
     <Link
@@ -42,7 +44,7 @@ const SkillListItem = (props: Props): JSX.Element => {
           key={index}
           type={skill.type}
           category={category}
-          active={index < rankNum}
+          rank={skillRanks[index]}
         />
       ))}
     </Link>

@@ -1,34 +1,50 @@
 import React from 'react'
+import styled from 'styled-components'
 
+export type RankBorder = 'top' | 'bottom' | null
 interface Props {
   type: 'active' | 'passive'
   category: 'combat' | 'biotic' | 'tech'
-  active: boolean
+  rank: number | undefined
 }
 
+const CircleBorder = styled.circle<{ loc: RankBorder }>`
+  fill: transparent;
+  stroke-width: 2;
+  stroke-dasharray: 510;
+  stroke-dashoffset: ${({ loc }) => (loc === 'top' ? 1002 : 491)}; ;
+`
+
 const RankSymbol = (props: Props): JSX.Element => {
-  const size = 10
-  const { type, category, active } = props
+  const size = 14
+  const { type, category, rank } = props
 
   let color = ''
+
+  let rankBorder: RankBorder = null
+  if (rank && rank > 3 && (rank - Math.floor(rank)).toFixed(1) === '0.1') {
+    rankBorder = 'top'
+  } else if (
+    rank &&
+    rank > 3 &&
+    (rank - Math.floor(rank)).toFixed(1) === '0.2'
+  ) {
+    rankBorder = 'bottom'
+  }
 
   switch (category) {
     case 'combat':
       color = '#C65953'
-      // inactiveColor = '#683134'
       break
     case 'biotic':
       color = '#8F88BF'
-      // inactiveColor = '#4D4B63'
       break
     case 'tech':
       color = '#C38867'
-      // inactiveColor = '#654B3B'
       break
     default:
       break
   }
-  // const color = active ? activeColor : inactiveColor
 
   return (
     <div
@@ -39,23 +55,59 @@ const RankSymbol = (props: Props): JSX.Element => {
         xmlns="http://www.w3.org/2000/svg"
         viewBox={`0 0 ${size} ${size}`}
         style={{
-          height: size,
-          width: size,
+          height: size + 4,
+          width: size + 4,
           marginTop: 2,
-          opacity: active ? 1 : 0.4,
+          opacity: rank ? 1 : 0.4,
         }}
       >
         {type === 'active' && (
           <circle
-            r={size / 2}
+            r={size / 3}
             cy={size / 2}
             cx={size / 2}
             strokeWidth="0"
             fill={color}
           />
         )}
+        {rankBorder && type === 'active' && (
+          <CircleBorder
+            r={size - 8}
+            cy={size / 2}
+            cx={size / 2}
+            stroke={color}
+            loc={rankBorder}
+          />
+        )}
         {type === 'passive' && (
-          <polygon points={`0 0,${size} 0, ${size / 2} ${size}`} fill={color} />
+          <polygon
+            points={`3 3,${size - 3} 3, ${size / 2} ${size - 3}`}
+            fill={color}
+          />
+        )}
+        {rankBorder === 'top' && type === 'passive' && (
+          <polygon
+            points={`1 0, ${size - 1} 0`}
+            stroke={color}
+            fill="transparent"
+            strokeWidth="4"
+          />
+        )}
+        {rankBorder === 'bottom' && type === 'passive' && (
+          <>
+            <polygon
+              points={`1 3, ${size / 2} ${size}`}
+              stroke={color}
+              fill="transparent"
+              strokeWidth="2"
+            />
+            <polygon
+              points={`${size / 2} ${size}, ${size - 1} 3`}
+              stroke={color}
+              fill="transparent"
+              strokeWidth="2"
+            />
+          </>
         )}
       </svg>
     </div>
